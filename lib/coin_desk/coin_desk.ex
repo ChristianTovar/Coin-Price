@@ -6,20 +6,20 @@ defmodule CoinDesk do
     url = "#{@coindesk_url}/#{currency}.json"
 
     %{"bpi" => %{^currency => details}} =
-      HTTPoison.get!(url, [], [timeout: 50_000, recv_timeout: 50_000]).body
+      HTTPoison.get!(url, [], timeout: 50_000, recv_timeout: 50_000).body
       |> Jason.decode!()
 
     details["rate"]
   end
 
   def get_all_currencies() do
-      HTTPoison.get!(@all_currencies_url, [], [timeout: 50_000, recv_timeout: 50_000]).body
-      |> Jason.decode!()
-      |> Enum.map(fn %{"country" => _, "currency" => currency} -> currency end)
+    HTTPoison.get!(@all_currencies_url, [], timeout: 50_000, recv_timeout: 50_000).body
+    |> Jason.decode!()
+    |> Enum.map(fn %{"country" => _, "currency" => currency} -> currency end)
   end
 
   def amount_of_currencies do
-    CoinDesk.get_all_currencies |> length()
+    CoinDesk.get_all_currencies() |> length()
   end
 
   def print_price(product_id) do
