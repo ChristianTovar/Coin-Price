@@ -1,6 +1,6 @@
 defmodule CoinPrice do
   @moduledoc """
-  Documentation for CoinPrice.
+  Documentation for CoinPrice module.
   """
 
   def get_prices() do
@@ -8,5 +8,9 @@ defmodule CoinPrice do
     |> Enum.map(fn product_id ->
       spawn(fn -> CoinDesk.print_price(product_id) end)
     end)
+  end
+
+  def get_number_of_currencies() do
+    CoinDesk.amount_of_currencies()
   end
 end
