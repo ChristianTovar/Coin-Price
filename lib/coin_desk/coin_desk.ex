@@ -19,16 +19,14 @@ defmodule CoinDesk do
   end
 
   def amount_of_currencies do
-    CoinDesk.get_all_currencies() |> length()
+    get_all_currencies() |> length()
   end
 
   def print_price(product_id) do
-    :timer.sleep(1000)
     start = System.monotonic_time(:millisecond)
-
     price = get_price(product_id)
-
     stop = System.monotonic_time(:millisecond)
+
     time = (stop - start) / 1000
     IO.puts("#{product_id}: #{price}\ttime: #{time}s")
   end
