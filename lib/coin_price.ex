@@ -1,6 +1,6 @@
 defmodule CoinPrice do
   @moduledoc """
-  Documentation for CoinPrice.
+  Documentation for CoinPrice module.
   """
 
   def get_prices() do
