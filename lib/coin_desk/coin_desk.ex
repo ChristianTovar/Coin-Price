@@ -23,6 +23,7 @@ defmodule CoinDesk do
   end
 
   def print_price(product_id) do
+    :timer.sleep(1000)
     start = System.monotonic_time(:millisecond)
     price = get_price(product_id)
     stop = System.monotonic_time(:millisecond)
