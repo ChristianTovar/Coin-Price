@@ -1,6 +1,12 @@
 defmodule CoinDesk do
   @coindesk_url "https://api.coindesk.com/v1/bpi/currentprice"
   @all_currencies_url "https://api.coindesk.com/v1/bpi/supported-currencies.json"
+  
+    def get_all_currencies() do
+      HTTPoison.get!(@all_currencies_url, [], timeout: 50_000, recv_timeout: 50_000).body
+      |> Jason.decode!()
+      |> Enum.map(fn %{"country" => _, "currency" => currency} -> currency end)
+    end
 
   def get_price(currency) do
     url = "#{@coindesk_url}/#{currency}.json"
@@ -10,12 +16,6 @@ defmodule CoinDesk do
       |> Jason.decode!()
 
     details["rate"]
-  end
-
-  def get_all_currencies() do
-    HTTPoison.get!(@all_currencies_url, [], timeout: 50_000, recv_timeout: 50_000).body
-    |> Jason.decode!()
-    |> Enum.map(fn %{"country" => _, "currency" => currency} -> currency end)
   end
 
   def amount_of_currencies do

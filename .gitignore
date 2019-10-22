@@ -22,7 +22,6 @@ erl_crash.dump
 *.DS_Store
 
 # Ignore configuration files
-/apps/*/config/dev.exs
 .elixir_ls
 .idea
 *.iml
