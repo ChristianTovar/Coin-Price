@@ -10,6 +10,12 @@ defmodule CoinPrice do
     end)
   end
 
+  @doc """
+  Get the numeber of currencies supported by the coindesk API.
+  ## Examples
+      iex> CoinPrice.get_number_of_currencies()
+      167
+  """
   def get_number_of_currencies() do
     CoinDesk.amount_of_currencies()
   end
