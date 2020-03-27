@@ -16,7 +16,5 @@ defmodule CoinPrice do
       iex> CoinPrice.get_number_of_currencies()
       167
   """
-  def get_number_of_currencies() do
-    CoinDesk.amount_of_currencies()
-  end
+  def get_number_of_currencies, do: CoinDesk.amount_of_currencies()
 end
