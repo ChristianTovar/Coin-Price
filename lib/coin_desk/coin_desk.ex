@@ -18,9 +18,7 @@ defmodule CoinDesk do
     details["rate"]
   end
 
-  def amount_of_currencies do
-    get_all_currencies() |> length()
-  end
+  def amount_of_currencies, do: get_all_currencies() |> length()
 
   def print_price(product_id) do
     :timer.sleep(1000)

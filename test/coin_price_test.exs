@@ -3,6 +3,6 @@ defmodule CoinPriceTest do
   doctest CoinPrice
 
   test "amount of currencies" do
-    assert CoinPrice.get_number_of_currencies == 167
+    assert CoinPrice.get_number_of_currencies() == 167
   end
 end
